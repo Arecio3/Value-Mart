@@ -1,0 +1,54 @@
+.subhead {
+    color: #1890FF;
+}
+
+.heading {
+    font-size: 33px;
+}
+
+.email-form {
+    margin-top: 2rem;
+}
+
+.img1-box {
+    position: absolute;
+    left: 3rem;
+    top: 26rem;
+ }
+ .img2-box {
+     position: absolute;
+     right: 1rem;
+     top: 17rem;
+}
+
+.img1 {
+    max-height: 200px;
+    max-width: 200px;
+}
+.img2 {
+    max-height: 200px;
+    max-width: 200px;
+}
+
+@media screen and (min-width: 1200px) {
+    .img1-box {
+    position: absolute;
+    left: 7rem;
+    }
+    .img2-box {
+     position: absolute;
+     right: 15rem;
+     top: 25rem;
+    }
+    
+    .img1 {
+        max-height: 700px;
+        max-width: 700px;
+    }
+    
+    .img2 {
+        max-height: 700px;
+       max-width: 500px;
+    }
+    
+}

@@ -8,6 +8,8 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "antd": "^4.17.2",
+    "dotenv": "^10.0.0",
+    "firebase": "^9.5.0",
     "mdb-react-ui-kit": "^2.0.0",
     "mdbreact": "^5.2.0",
     "react": "^17.0.2",
