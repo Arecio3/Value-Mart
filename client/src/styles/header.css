@@ -1,0 +1,19 @@
+.float-right {
+    display: flex;
+    position: absolute;
+    left: .5rem !important;
+}
+.float-left {
+    display: flex;
+    position: absolute;
+    left: 1rem !important;
+}
+
+@media screen and (min-width: 1200px){
+    .float-right {
+        left: 95rem !important;
+    }
+    .float-left {
+        left: -13rem !important;
+    }
+}
