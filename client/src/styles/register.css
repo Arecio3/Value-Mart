@@ -1,5 +1,5 @@
 .subhead {
-    color: #1890FF;
+    color: #c7c6c1;
 }
 
 .heading {
@@ -18,7 +18,7 @@
  .img2-box {
      position: absolute;
      right: 1rem;
-     top: 17rem;
+     top: 21rem;
 }
 
 .img1 {
@@ -26,14 +26,15 @@
     max-width: 200px;
 }
 .img2 {
-    max-height: 200px;
-    max-width: 200px;
+    max-height: 150px;
+    max-width: 150px;
 }
 
 @media screen and (min-width: 1200px) {
     .img1-box {
     position: absolute;
     left: 7rem;
+    top: 19rem;
     }
     .img2-box {
      position: absolute;

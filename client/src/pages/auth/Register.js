@@ -21,8 +21,8 @@ const Register = () => {
              value={email} 
              onChange={(e) => setEmail(e.target.value)} 
              autoFocus
-
              />
+             <button type="submit" className="btn btn-blue m-3">Register @{email} </button>
         </form>
     
 
@@ -31,11 +31,11 @@ const Register = () => {
             <div className="row">
                 <div className="col-md-6 offset-md-3">
                     <h2 className='heading'>Register Now</h2>
-                    <h6 className='subhead'>Start shopping!</h6>
+                    <h6 className='subhead'>Start shopping today !</h6>
                     {registerForm()}
                 </div>
             </div>
-            <div className="img1-box">
+            <div className="img1-box img-fluid">
                 <img className="img1" src={bg1} alt="" />
             </div>      
             <div className="img2-box img-fluid">

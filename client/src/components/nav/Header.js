@@ -14,8 +14,8 @@ const Header = () => {
     }
 
     return (
-        <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
-        <Item key="home" icon={<HomeOutlined />}>
+        <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" className='nav-container'>
+        <Item  key="home" icon={<HomeOutlined />}>
           <Link to="/">Home</Link>
         </Item>
         <Item key="register" icon={<UserAddOutlined />} className="float-right">
@@ -26,8 +26,11 @@ const Header = () => {
         </Item>
         <SubMenu className="float-left" key="SubMenu" icon={<SettingOutlined />} title="Username">
             <Item key="setting:1"><Link to="/login">Login</Link></Item>
-            <Item key="setting:2"><Link to="/register">Create Accoun</Link>t</Item>
+            <Item key="setting:2"><Link to="/register">Create Account</Link></Item>
         </SubMenu>
+        <Item className='logo'>
+          Value-Mart
+        </Item>
       </Menu>
     )
 }
