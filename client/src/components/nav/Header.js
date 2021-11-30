@@ -28,9 +28,6 @@ const Header = () => {
             <Item key="setting:1"><Link to="/login">Login</Link></Item>
             <Item key="setting:2"><Link to="/register">Create Account</Link></Item>
         </SubMenu>
-        <Item className='logo'>
-          Value-Mart
-        </Item>
       </Menu>
     )
 }
