@@ -9,6 +9,7 @@ require("firebase/auth");
 toast.configure()
 const Register = () => {
     const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
     
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -19,7 +20,7 @@ const Register = () => {
         };
         // Passes email and config into function
         await auth.sendSignInLinkToEmail(email, config);
-        toast.success(`Email was sent to ${email}. Click the link to finish registration`, {
+        toast.success(`Thank you ${name}, an email was sent to ${email}. Click the link to finish registration!`, {
              position: "top-right",
              autoClose: false,
              hideProgressBar: false,
@@ -30,7 +31,9 @@ const Register = () => {
          })
         // Save email to local storage
         window.localStorage.setItem('emailForRegistration', email);
+        window.localStorage.setItem('nameForRegistration', name);
         setEmail("");
+        setName("");
     }
 
     // Form UI
@@ -42,6 +45,14 @@ const Register = () => {
              className="form-control email-form" 
              value={email} 
              onChange={(e) => setEmail(e.target.value)} 
+             autoFocus
+             />
+            <input
+             placeholder='First Name' 
+             type="name" 
+             className="form-control email-form" 
+             value={name} 
+             onChange={(e) => setName(e.target.value)} 
              autoFocus
              />
              <button type="submit" className="btn btn-blue m-3">Register /{email} </button>

@@ -10,11 +10,13 @@ require("firebase/auth");
 toast.configure()
 const RegisterFinal = ({history}) => {
     const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     // Grabs email from local Storage and sets it to the email state
     useEffect(() => {
-        // Grab email from local storage
+        // Grab email & name from local storage
         setEmail(window.localStorage.getItem('emailForRegistration'));
+        setName(window.localStorage.getItem('nameForRegistration'));
     }, []);
     
     const handleSubmit = async (e) => {
@@ -25,8 +27,9 @@ const RegisterFinal = ({history}) => {
             console.log('User Successfully created', result)
 
             if(result.user.emailVerified) {
-                // Delete email from local storage
+                // Delete email & name from local storage
                 window.localStorage.removeItem('emailForRegistration')
+                window.localStorage.removeItem('nameForRegistration')
                 // get current user logged into firebase
                 let user = auth.currentUser
                 // Update password
@@ -52,6 +55,14 @@ const RegisterFinal = ({history}) => {
              type="email" 
              className="form-control email-form" 
              value={email} 
+             autoFocus
+             />
+             <br />
+            <input
+             placeholder='First Name' 
+             type="name" 
+             className="form-control" 
+             value={name} 
              autoFocus
              />
              <br />
