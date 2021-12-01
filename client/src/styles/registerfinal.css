@@ -1,0 +1,12 @@
+.registerImg1-box {
+    position: absolute;
+    left: -6rem;
+    max-height: 300px;
+    width: 300px;
+}
+.registerImg2-box {
+    position: absolute;
+    right: 60rem;
+    max-height: 300px;
+    width: 300px;
+}
