@@ -54,7 +54,7 @@ const RegisterFinal = ({history}) => {
     const completeRegistrationForm = () => 
         <form onSubmit={handleSubmit}>
             <input
-             placeholder='Email' 
+             placeholder='Your email' 
              type="email" 
              className="form-control email-form" 
              value={email} 
@@ -62,7 +62,7 @@ const RegisterFinal = ({history}) => {
              />
              <br />
             <input
-             placeholder='First Name' 
+             placeholder='First name' 
              type="name" 
              className="form-control" 
              value={name} 

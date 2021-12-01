@@ -1,0 +1,22 @@
+.loginImg2 {
+    position: absolute;
+    border-radius: 50%;
+
+}
+.loginImg3 {
+    position: absolute;
+    right: -10rem;
+    border-radius: 50%;
+    
+}
+.loginContainer {
+    background-color: #4380b1;
+    height: 100vh;
+}
+.login-heading {
+    color: #fff;
+    font-weight: 200;
+}
+.login-subhead {
+    color: #d2d2d2;
+}

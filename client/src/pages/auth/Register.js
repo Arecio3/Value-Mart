@@ -40,7 +40,7 @@ const Register = () => {
     const registerForm = () => 
         <form onSubmit={handleSubmit}>
             <input
-             placeholder='Email' 
+             placeholder='Your email' 
              type="email" 
              className="form-control email-form" 
              value={email} 
@@ -48,14 +48,14 @@ const Register = () => {
              autoFocus
              />
             <input
-             placeholder='First Name' 
+             placeholder='First name' 
              type="name" 
              className="form-control email-form" 
              value={name} 
              onChange={(e) => setName(e.target.value)} 
              autoFocus
              />
-             <button type="submit" className="btn btn-blue m-3">Register /{email} </button>
+             <button type="submit" className="btn btn-blue m-3">Register {email} </button>
         </form>
     
 
