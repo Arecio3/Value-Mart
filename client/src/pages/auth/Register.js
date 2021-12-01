@@ -3,8 +3,7 @@ import bg1 from '../../assets/register-pic1.svg';
 import bg2 from '../../assets/register-pic2.svg';
 import '../../styles/register.css';
 import { auth } from '../../firebase';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 require("firebase/auth");
 
 toast.configure()
@@ -57,7 +56,6 @@ const Register = () => {
                     <h2 className='heading'>Register Now</h2>
                     <h6 className='subhead'>Start shopping today !</h6>
                     {registerForm()}
-                    <ToastContainer/>
                 </div>
             </div>
             <div className="img1-box img-fluid">
