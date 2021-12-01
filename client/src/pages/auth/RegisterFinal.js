@@ -36,7 +36,7 @@ const RegisterFinal = ({history}) => {
                 // populate user to redux store
                 console.log(idTokenResult)
                 // redirect user back
-                history.push('/')
+                history.push("/");
             }
         } catch (error) {
             console.log(error)
