@@ -5,6 +5,7 @@ import '../../styles/register.css';
 import { auth } from '../../firebase';
 import { toast } from 'react-toastify';
 import '../../styles/registerfinal.css';
+import { useNavigate } from 'react-router-dom';
 require("firebase/auth");
 
 toast.configure()
@@ -12,6 +13,8 @@ const RegisterFinal = ({history}) => {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
+    let navigate = useNavigate();
+
     // Grabs email from local Storage and sets it to the email state
     useEffect(() => {
         // Grab email & name from local storage
@@ -39,7 +42,7 @@ const RegisterFinal = ({history}) => {
                 // populate user to redux store
                 console.log(idTokenResult)
                 // redirect user back
-                history.push("/");
+                navigate("/");
             }
         } catch (error) {
             console.log(error)
