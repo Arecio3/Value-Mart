@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import bg1 from '../../assets/register-pic1.svg';
 import bg2 from '../../assets/register-pic2.svg';
 import '../../styles/register.css';
@@ -7,44 +7,30 @@ import { toast } from 'react-toastify';
 require("firebase/auth");
 
 toast.configure()
-const Register = () => {
+const RegisterFinal = ({history}) => {
     const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    useEffect(() => {
+        // Grab email from local storage
+        setEmail(window.localStorage.getItem('emailForRegistration'))
+    }, [])
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // config for email
-        const config = {
-            url: 'http://localhost:3000/register/complete',
-            handleCodeInApp: true,
-        };
-        // Passes email and config into function
-        await auth.sendSignInLinkToEmail(email, config);
-        toast.success(`Email was sent to ${email}. Click the link to finish registration`, {
-             position: "top-right",
-             autoClose: false,
-             hideProgressBar: false,
-             closeOnClick: true,
-             pauseOnHover: true,
-             draggable: true,
-             progress: undefined
-         })
-        // Save email to local storage
-        window.localStorage.setItem('emailForRegistration', email);
-        setEmail("");
     }
 
     // Form UI
-    const registerForm = () => 
+    const completeRegistrationForm = () => 
         <form onSubmit={handleSubmit}>
             <input
              placeholder='Email' 
              type="email" 
              className="form-control email-form" 
              value={email} 
-             onChange={(e) => setEmail(e.target.value)} 
              autoFocus
              />
-             <button type="submit" className="btn btn-blue m-3">Register /{email} </button>
+             <button type="submit" className="btn btn-green m-3">Complete Registration</button>
         </form>
     
 
@@ -54,7 +40,7 @@ const Register = () => {
                 <div className="col-md-6 offset-md-3">
                     <h2 className='heading'>Register Now</h2>
                     <h6 className='subhead'>Start shopping today !</h6>
-                    {registerForm()}
+                    {completeRegistrationForm()}
                 </div>
             </div>
             <div className="img1-box img-fluid">
@@ -67,4 +53,4 @@ const Register = () => {
     )
 }
 
-export default Register;
+export default RegisterFinal;
