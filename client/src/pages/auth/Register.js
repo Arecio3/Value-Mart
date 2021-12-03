@@ -53,7 +53,6 @@ const Register = () => {
              className="form-control email-form" 
              value={name} 
              onChange={(e) => setName(e.target.value)} 
-             autoFocus
              />
              <button type="submit" className="btn btn-blue m-3">Register {email} </button>
         </form>
