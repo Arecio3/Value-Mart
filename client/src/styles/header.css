@@ -27,3 +27,18 @@
 
     }
 }
+@media screen and (min-width: 2000px){
+    .float-right {
+        left: 140rem !important;
+    }
+    .float-left {
+        left: -13rem !important;
+    }
+    .logo {
+        position: absolute;
+        left: -26rem;
+        font-size: 30px !important;
+        color: #1890ff;
+
+    }
+}
