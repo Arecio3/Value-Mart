@@ -1,9 +1,9 @@
 .mb-1 {
     display: flex;
     margin: 1rem;
-    line-height: 1.5715;
-    justify-content: center;
     text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 .loginImg3 {
     position: absolute;
@@ -11,6 +11,7 @@
     max-height: 250px;
     max-width: 200px;
     left: -12rem;
+    top: 4rem;
     
 }
 .loginImg2 {
@@ -23,6 +24,7 @@
 .loginContainer {
     background-color: #fff;
     height: 100vh;
+    margin-top: -1rem;
 }
 .login-heading {
     color: #1890ff;
@@ -33,10 +35,7 @@
     color: #d2d2d2;
     font-size: 15px;
 }
-.showPassBtn {
-    color: #fff;
-    
-}
+
 .showPassLabelContainer {
     margin: 10px;
     display: inline-block;
@@ -58,6 +57,7 @@
     .loginContainer {
         background-color: #4380b1;
         height: 100vh;
+        margin-top: auto;
     }
     .login-heading {
         color: #fff;
@@ -65,7 +65,13 @@
     .login-loading {
         color: #fff;
     }
+    .showPassBtn {
+    color: #fff;
+    }
 
+.mb-1 {
+    width: 100%;
+}
 }
 
 @media screen and (min-width: 2000px) {
@@ -83,6 +89,8 @@
     .loginContainer {
         background-color: #4380b1;
         height: 100vh;
+        margin-top: auto;
+
     }
     .login-heading {
         color: #fff;
@@ -92,6 +100,13 @@
     .login-subhead {
         color: #d2d2d2;
         font-size: 17px;
+    }
+    .showPassBtn {
+        color: #fff;       
+    }
+
+    .mb-1 {
+        width: 100%;
     }
 
 }

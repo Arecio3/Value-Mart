@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import bg1 from '../../assets/login1.png';
 import bg3 from '../../assets/login3.png';
 import '../../styles/login.css';
-import { auth } from '../../firebase';
+import { auth, googleAuthProvider } from '../../firebase';
 import { toast } from 'react-toastify';
-import { MailOutlined, LoadingOutlined } from '@ant-design/icons';
+import { MailOutlined, LoadingOutlined, GoogleOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -55,6 +55,25 @@ const Login = () => {
     }
     }
 
+    const googleLogin = async () => {
+        auth.signInWithPopup(googleAuthProvider).then(async(result) => {
+            const {user} = result
+            const idTokenResult = await user.getIdTokenResult();
+            dispatch({
+                type: "LOGGED_IN_USER",
+                payload: {
+                  email: user.email,
+                  token: idTokenResult.token
+                },
+              });
+            navigate('/');
+        })
+        .catch((error) =>  {
+            console.log(error);
+            toast.error(error.message);
+        })
+    }
+
     // Form UI
     const loginForm = () => 
         <form onSubmit={handleLogin}>
@@ -80,7 +99,7 @@ const Login = () => {
              type="primary"
              className='mb-1'
              shape='round'
-             icon={loading ? <LoadingOutlined /> : <MailOutlined/>}
+             icon={<MailOutlined/>}
              size='large'
              disabled={!email || password.length < 6}
              > Login</Button>
@@ -101,6 +120,15 @@ const Login = () => {
                     )}
                 
                     {loginForm()}
+                    <Button
+                    onClick={googleLogin}
+                    type="danger"
+                    className='mb-1'
+                    shape='round'
+                    icon={<GoogleOutlined/>}
+                    size='large'
+                    disabled={!email || password.length < 6}
+                    >Google Login</Button>
                 </div>
             </div>
             <div className="img1-box img-fluid">
