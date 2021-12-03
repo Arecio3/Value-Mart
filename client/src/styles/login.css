@@ -33,6 +33,16 @@
     color: #d2d2d2;
     font-size: 15px;
 }
+.showPassBtn {
+    color: #fff;
+    
+}
+.showPassLabelContainer {
+    margin: 10px;
+    display: inline-block;
+}
+
+
 @media screen and (min-width: 1200px) {
     .loginImg2 {
         max-height: 550px;
@@ -52,8 +62,12 @@
     .login-heading {
         color: #fff;
     }
+    .login-loading {
+        color: #fff;
+    }
 
 }
+
 @media screen and (min-width: 2000px) {
     .loginImg2 {
         max-height: 750px;

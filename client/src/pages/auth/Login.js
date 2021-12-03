@@ -19,6 +19,15 @@ const Login = () => {
     let dispatch = useDispatch();
     let navigate = useNavigate();
 
+    function showPass() {
+    var x = document.getElementById("myInput");
+    if (x.type === "password") {
+    x.type = "text";
+    } else {
+    x.type = "password";
+  }
+}
+
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -58,12 +67,14 @@ const Login = () => {
              autoFocus
              />
             <input
+             id="myInput"
              placeholder='Your password' 
              type="password" 
              className="form-control email-form" 
              value={password} 
-             onChange={(e) => setPassword(e.target.value)} 
+             onChange={(e) => setPassword(e.target.value)}
              />
+             <input type='checkbox' onClick={showPass} /> <div className="showPassLabelContainer"><p className="showPassBtn">Show Password</p></div>
              <Button
              onClick={handleLogin}
              type="primary"
@@ -81,8 +92,14 @@ const Login = () => {
         <div className="container p-5">
             <div className="row">
                 <div className="col-md-6 offset-md-3">
-                    <h1 className='login-heading'>Login</h1>
-                    <h5 className='login-subhead'>Welcome Back</h5>
+                    { !loading ? (
+
+                        <h1 className='login-heading'>Login</h1>
+                    ) : (
+
+                        <h4 className='login-loading'>Loading <LoadingOutlined style={{color: '#d2d2d2'}}/></h4>
+                    )}
+                
                     {loginForm()}
                 </div>
             </div>
