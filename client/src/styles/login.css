@@ -1,34 +1,83 @@
-.loginImg2 {
-    position: absolute;
-    border-radius: 50%;
-    max-height: 550px;
-    max-width: 500px;
-    left: -3rem;
-}
-.loginImg3 {
-    position: absolute;
-    right: -10rem;
-    border-radius: 50%;
-    max-height: 550px;
-    max-width: 500px;
-    
-}
-.loginContainer {
-    background-color: #4380b1;
-    height: 100vh;
-}
-.login-heading {
-    color: #fff;
-    font-weight: 200;
-}
-.login-subhead {
-    color: #d2d2d2;
-}
-
 .mb-1 {
     display: flex;
     margin: 1rem;
     line-height: 1.5715;
     justify-content: center;
     text-align: center;
+}
+.loginImg3 {
+    position: absolute;
+    border-radius: 50%;
+    max-height: 250px;
+    max-width: 200px;
+    left: -12rem;
+    
+}
+.loginImg2 {
+    position: absolute;
+    border-radius: 50%;
+    max-height: 250px;
+    max-width: 200px;
+    left: -3rem;
+}
+.loginContainer {
+    background-color: #fff;
+    height: 100vh;
+}
+.login-heading {
+    color: #1890ff;
+    font-weight: 200;
+    font-size: 40px;
+}
+.login-subhead {
+    color: #d2d2d2;
+    font-size: 15px;
+}
+@media screen and (min-width: 1200px) {
+    .loginImg2 {
+        max-height: 550px;
+        max-width: 500px;
+        left: -3rem;
+    }
+    .loginImg3 {
+        max-height: 550px;
+        max-width: 500px;
+        left: -23rem;
+
+    }
+    .loginContainer {
+        background-color: #4380b1;
+        height: 100vh;
+    }
+    .login-heading {
+        color: #fff;
+    }
+
+}
+@media screen and (min-width: 2000px) {
+    .loginImg2 {
+        max-height: 750px;
+        max-width: 700px;
+        left: -3rem;
+    }
+    .loginImg3 {
+        left: -35rem;
+        max-height: 750px;
+        max-width: 750px;
+        
+    }
+    .loginContainer {
+        background-color: #4380b1;
+        height: 100vh;
+    }
+    .login-heading {
+        color: #fff;
+        font-size: 55px;
+        font-weight: 200;
+    }
+    .login-subhead {
+        color: #d2d2d2;
+        font-size: 17px;
+    }
+
 }
