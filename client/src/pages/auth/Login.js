@@ -4,18 +4,46 @@ import bg3 from '../../assets/login3.png';
 import '../../styles/login.css';
 import { auth } from '../../firebase';
 import { toast } from 'react-toastify';
-import { MailOutlined } from '@ant-design/icons';
+import { MailOutlined, LoadingOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 require("firebase/auth");
 
 toast.configure()
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    
+    const [loading, setLoading] = useState(false);
+
+    let dispatch = useDispatch();
+    let navigate = useNavigate();
+
+
     const handleLogin = async (e) => {
         e.preventDefault();
+        setLoading(true)
     //    console.table(email, password)
+    // Log user in
+    try {
+        const result = await auth.signInWithEmailAndPassword(email, password)
+        // console.log(result)
+        const { user } = result
+        const idTokenResult = await user.getIdTokenResult()
+        // Dispatch result to redux
+        dispatch({
+            type: "LOGGED_IN_USER",
+            payload: {
+              email: user.email,
+              token: idTokenResult.token
+            },
+          });
+          navigate('/')
+    } catch (error) {
+        console.log(error)
+        toast.error(error.message)
+        setLoading(false)
+    }
     }
 
     // Form UI
@@ -41,7 +69,7 @@ const Login = () => {
              type="primary"
              className='mb-1'
              shape='round'
-             icon={<MailOutlined/>}
+             icon={loading ? <LoadingOutlined /> : <MailOutlined/>}
              size='large'
              disabled={!email || password.length < 6}
              > Login</Button>
