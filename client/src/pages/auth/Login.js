@@ -127,7 +127,6 @@ const Login = () => {
                     shape='round'
                     icon={<GoogleOutlined/>}
                     size='large'
-                    disabled={!email || password.length < 6}
                     >Google Login</Button>
                 </div>
             </div>

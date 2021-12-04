@@ -4,7 +4,7 @@ import { UserAddOutlined, HomeOutlined, SettingOutlined, UserOutlined, LogoutOut
 import '../../styles/header.css';
 import { Link } from 'react-router-dom';
 import firebase from 'firebase/compat';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const { SubMenu, Item } = Menu;
@@ -12,6 +12,7 @@ const { SubMenu, Item } = Menu;
 const Header = () => {
     const [current, setCurrent] = useState('home')
     const dispatch = useDispatch();
+    const {user} = useSelector((state) => ({...state}));
     let navigate = useNavigate();
   // For active border highlight
     const handleClick = (e) => {
@@ -27,22 +28,25 @@ const Header = () => {
       navigate('/login')
     }
 
+    const nickname = `Hello, ${user.email && user.email.split('@')[0]}`
+
     return (
         <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" className='nav-container'>
         <Item  key="home" icon={<HomeOutlined />}>
           <Link to="/">Home</Link>
         </Item>
-        <Item key="register" icon={<UserAddOutlined />} className="float-right">
+        {!user && (<Item key="register" icon={<UserAddOutlined />} className="float-right">
           <Link to="/register">Register</Link>
-        </Item>
-        <Item key="login" icon={<UserOutlined />} className="float-right">
+        </Item>)}
+        {!user && (<Item key="login" icon={<UserOutlined />} className="float-right">
           <Link to="/login">Login</Link>
-        </Item>
-        <SubMenu className="float-left" key="SubMenu" icon={<SettingOutlined />} title={firebase.email || 'Guest'}>
-            <Item key="setting:1"><Link to="/login">Login</Link></Item>
-            <Item key="setting:2"><Link to="/register">Create Account</Link></Item>
+        </Item>)}
+        {user && (<SubMenu className={user ? "float-right" : "float-left"} key="SubMenu" icon={<SettingOutlined />} title={nickname}>
+            {user ? "" : <Item key="setting:1"><Link to="/login">Login</Link></Item>}
+            {user ? "" : <Item key="setting:2"><Link to="/register">Create Account</Link></Item>}
             <Item icon={<LogoutOutlined />} style={{color: 'red'}} onClick={logout}><Link to="/register">Logout</Link></Item>
         </SubMenu>
+        )}
       </Menu>
     )
 }
