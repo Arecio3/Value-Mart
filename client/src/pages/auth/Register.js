@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import bg1 from '../../assets/register-pic1.svg';
 import bg2 from '../../assets/register-pic2.svg';
 import '../../styles/register.css';
 import { auth } from '../../firebase';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 require("firebase/auth");
 
@@ -10,6 +12,17 @@ toast.configure()
 const Register = () => {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
+    let navigate = useNavigate();
+
+    const {user} = useSelector((state) => ({...state}));
+
+    useEffect(() => {
+        if(user && user.token) {
+            navigate('/')
+        }  else {
+            return
+        }
+    }, [navigate, user]);
     
     const handleSubmit = async (e) => {
         e.preventDefault();

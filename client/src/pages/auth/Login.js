@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import bg1 from '../../assets/login1.png';
 import bg3 from '../../assets/login3.png';
 import '../../styles/login.css';
@@ -6,7 +6,7 @@ import { auth, googleAuthProvider } from '../../firebase';
 import { toast } from 'react-toastify';
 import { MailOutlined, LoadingOutlined, GoogleOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 require("firebase/auth");
 
@@ -19,6 +19,9 @@ const Login = () => {
     let dispatch = useDispatch();
     let navigate = useNavigate();
 
+    const {user} = useSelector((state) => ({...state}));
+
+
     function showPass() {
     var x = document.getElementById("myInput");
     if (x.type === "password") {
@@ -27,6 +30,14 @@ const Login = () => {
     x.type = "password";
   }
 }
+
+useEffect(() => {
+    if(user && user.token) {
+        navigate('/')
+    }  else {
+        return
+    }
+}, [navigate, user]);
 
 
     const handleLogin = async (e) => {

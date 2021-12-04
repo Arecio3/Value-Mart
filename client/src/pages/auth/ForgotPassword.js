@@ -8,6 +8,17 @@ import '../../styles/fgmp.css';
 const ForgotPassword = () => {
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
+    let navigate = useNavigate();
+
+    const {user} = useSelector((state) => ({...state}));
+
+    useEffect(() => {
+        if(user && user.token) {
+            navigate('/')
+        }  else {
+            return
+        }
+    }, [navigate, user]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
