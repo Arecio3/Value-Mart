@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { MailOutlined, LoadingOutlined, GoogleOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 require("firebase/auth");
 
 toast.configure()
@@ -123,11 +123,12 @@ const Login = () => {
                     <Button
                     onClick={googleLogin}
                     type="danger"
-                    className='mb-1'
+                    className='mb-1 google-btn'
                     shape='round'
                     icon={<GoogleOutlined/>}
                     size='large'
                     >Google Login</Button>
+                    <Link to="/forgot/password" className='fgmp'>Forgot Password</Link>
                 </div>
             </div>
             <div className="img1-box img-fluid">

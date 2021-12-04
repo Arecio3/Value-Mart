@@ -20,15 +20,7 @@ const Register = () => {
         };
         // Passes email and config into function
         await auth.sendSignInLinkToEmail(email, config);
-        toast.success(`Thank you ${name}, an email was sent to ${email}. Click the link to finish registration!`, {
-             position: "top-right",
-             autoClose: false,
-             hideProgressBar: false,
-             closeOnClick: true,
-             pauseOnHover: true,
-             draggable: true,
-             progress: undefined
-         })
+        toast.success(`Thank you ${name}, an email was sent to ${email}. Click the link to finish registration!`)
         // Save email to local storage
         window.localStorage.setItem('emailForRegistration', email);
         window.localStorage.setItem('nameForRegistration', name);

@@ -7,6 +7,7 @@ import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Home from './pages/Home';
 import RegisterFinal from './pages/auth/RegisterFinal';
+import ForgotPassword from './pages/auth/ForgotPassword';
 
 import { auth } from './firebase'; 
 import { useDispatch } from 'react-redux';
@@ -45,6 +46,7 @@ const App = () => {
               <Route exact path='/login' element={<Login/>}/>
               <Route exact path='/register' element={<Register/>}/>
               <Route exact path='/register/complete' element={<RegisterFinal/>}/>
+              <Route exact path='/forgot/password' element={<ForgotPassword/>}/>
           </Routes>
     </>
   );

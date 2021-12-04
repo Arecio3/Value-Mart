@@ -28,7 +28,7 @@ const Header = () => {
       navigate('/login')
     }
 
-    const nickname = `Hello, ${user.email && user.email.split('@')[0]}`
+    const nickname = `Hello, ${user?.email && user.email.split('@')[0]}`
 
     return (
         <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" className='nav-container'>
