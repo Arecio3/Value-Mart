@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import i18n  from "../../i18n";
+import cuba from '../../assets/cuba.png';
+import us from '../../assets/united-states-of-america.png';
 
 const { SubMenu, Item, ItemGroup } = Menu;
 
@@ -59,8 +61,8 @@ const Header = ({theme, setTheme}) => {
             <Item icon={<SettingOutlined />}><Link to="/settings">Settings</Link></Item>
             <SubMenu key="sub3" title="Display" icon={<EyeOutlined />}>
               <ItemGroup title="Langauges">
-              <Item onClick={() => i18n.changeLanguage('en')}>English</Item>
-              <Item onClick={() => i18n.changeLanguage('es')}>Spanish</Item>
+              <Item onClick={() => i18n.changeLanguage('en')}><div><img className="flag" src={us} alt="us flag" />English</div></Item>
+              <Item onClick={() => i18n.changeLanguage('es')}><div><img className="flag" src={cuba} alt="cuba flag" />Spanish</div></Item>
               </ItemGroup>
               <ItemGroup title="Theme">
               <Item key="12" icon={<DesktopOutlined />} onClick={changeTheme}><Switch checkedChildren={<i class="fas fa-sun"></i>} unCheckedChildren={<i class="far fa-moon"></i>} defaultChecked /></Item>
