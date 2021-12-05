@@ -6,6 +6,7 @@ import { auth } from '../../firebase';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useTranslation } from "react-i18next";
 require("firebase/auth");
 
 toast.configure()
@@ -13,6 +14,8 @@ const Register = ({theme}) => {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     let navigate = useNavigate();
+
+    const { t } = useTranslation();
 
     const {user} = useSelector((state) => ({...state}));
 
@@ -59,7 +62,7 @@ const Register = ({theme}) => {
              value={name} 
              onChange={(e) => setName(e.target.value)} 
              />
-             <button type="submit" className="btn btn-blue m-3">Register {email} </button>
+             <button type="submit" className="btn btn-blue m-3">{t('Register')} {email} </button>
         </form>
     
 
@@ -67,8 +70,8 @@ const Register = ({theme}) => {
         <div className={theme === "dark" ? "dm-container p-5" : "container p-5"}>
             <div className={theme === "dark" ? "row text-white" : "row"}>
                 <div className="col-md-6 offset-md-3">
-                    <h2 className={theme === "dark" ? "text-white heading" : 'heading'}>Register Now</h2>
-                    <h6 className='subhead'>Start shopping today !</h6>
+                    <h2 className={theme === "dark" ? "text-white heading" : 'heading'}>{t('RegisterNow')}</h2>
+                    <h6 className='subhead'>{t('RegisterSubHead')}</h6>
                     {registerForm()}
                 </div>
             </div>

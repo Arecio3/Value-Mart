@@ -31,7 +31,8 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     resources,
-    lng: document.querySelector('html').lang,
+    // lng: document.querySelector('html').lang,
+    lng: 'es',
     debug: true,
   });
 
