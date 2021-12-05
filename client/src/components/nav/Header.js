@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Menu } from 'antd';
-import { UserAddOutlined, HomeOutlined, SettingOutlined, UserOutlined, LogoutOutlined } from '@ant-design/icons';
+import { Menu, Switch } from 'antd';
+import { UserAddOutlined, HomeOutlined, SettingOutlined, UserOutlined, LogoutOutlined, DesktopOutlined, EyeOutlined } from '@ant-design/icons';
 import '../../styles/header.css';
 import { Link } from 'react-router-dom';
 import firebase from 'firebase/compat';
@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 const { SubMenu, Item } = Menu;
 
-const Header = () => {
+const Header = ({theme, setTheme}) => {
     const [current, setCurrent] = useState('home')
     const dispatch = useDispatch();
     const {user} = useSelector((state) => ({...state}));
@@ -18,6 +18,14 @@ const Header = () => {
     const handleClick = (e) => {
      setCurrent(e.key)
     }
+
+    function changeTheme() {
+      if (theme === "light") {
+          setTheme("dark");
+      } else {
+          setTheme("light");
+      }
+  };
 
     const logout = () => {
       firebase.auth().signOut();
@@ -31,19 +39,24 @@ const Header = () => {
     const nickname = `Hello, ${user?.email && user.email.split('@')[0]}`
 
     return (
-        <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" className='nav-container'>
+        <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" className={theme === "dark" ? "dark-mode" : 'nav-container'}>
         <Item  key="home" icon={<HomeOutlined />}>
-          <Link to="/">Home</Link>
+          <Link to="/" className={theme === "dark" ? "dark": "light"}>Home</Link>
         </Item>
         {!user && (<Item key="register" icon={<UserAddOutlined />} className="float-right">
-          <Link to="/register">Register</Link>
+          <Link to="/register" className={theme === "dark" ? "dark": "light"}>Register</Link>
         </Item>)}
-        {!user && (<Item key="login" icon={<UserOutlined />} className="float-right">
-          <Link to="/login">Login</Link>
+        {!user && (<Item key="login" icon={<UserOutlined/>} className="float-right">
+          <Link to="/login" className={theme === "dark" ? "dark": "light"}>Login</Link>
         </Item>)}
-        {user && (<SubMenu className={user ? "float-right" : "float-left"} key="SubMenu" icon={<SettingOutlined />} title={nickname}>
+        {user && (<SubMenu className={user ? "float-right" : "float-left"} key="SubMenu" icon={<UserOutlined />} title={nickname}>
             {user ? "" : <Item key="setting:1"><Link to="/login">Login</Link></Item>}
             {user ? "" : <Item key="setting:2"><Link to="/register">Create Account</Link></Item>}
+            <Item icon={<SettingOutlined />}><Link to="/settings">Settings</Link></Item>
+            <SubMenu key="sub3" title="Display" icon={<EyeOutlined />}>
+              <Item>Language <Switch  checkedChildren="EN" unCheckedChildren="ES" defaultChecked /></Item>
+              <Item key="12" icon={<DesktopOutlined />} onClick={changeTheme}><Switch checkedChildren="Dark" unCheckedChildren="Light" defaultChecked /></Item>
+            </SubMenu>
             <Item icon={<LogoutOutlined />} style={{color: 'red'}} onClick={logout}><Link to="/register">Logout</Link></Item>
         </SubMenu>
         )}

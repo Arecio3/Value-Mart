@@ -11,6 +11,18 @@
 .logo {
     display: none !important;
 }
+.dark {
+    color: #fff;
+}
+
+.light {
+    color: black;
+}
+.dark-mode {
+    background-color: darkgray!important;
+    color: #fff !important;
+    /* border-bottom: #1890ff 2px solid !important; */
+}
 
 @media screen and (min-width: 1200px){
     .float-right {
