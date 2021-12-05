@@ -55,7 +55,7 @@ const Header = ({theme, setTheme}) => {
             <Item icon={<SettingOutlined />}><Link to="/settings">Settings</Link></Item>
             <SubMenu key="sub3" title="Display" icon={<EyeOutlined />}>
               <Item>Language <Switch  checkedChildren="EN" unCheckedChildren="ES" defaultChecked /></Item>
-              <Item key="12" icon={<DesktopOutlined />} onClick={changeTheme}><Switch checkedChildren="Dark" unCheckedChildren="Light" defaultChecked /></Item>
+              <Item key="12" icon={<DesktopOutlined />} onClick={changeTheme}><Switch checkedChildren={<i class="fas fa-sun"></i>} unCheckedChildren={<i class="far fa-moon"></i>} defaultChecked /></Item>
             </SubMenu>
             <Item icon={<LogoutOutlined />} style={{color: 'red'}} onClick={logout}><Link to="/register">Logout</Link></Item>
         </SubMenu>
