@@ -58,7 +58,7 @@ const App = () => {
       <Header theme={theme} setTheme={setTheme}/>
       <ToastContainer/>
           <Routes>
-              <Route exact path='/' element={<Home />}/>
+              <Route exact path='/' element={<Home theme={theme}/>}/>
               <Route exact path='/login' element={<Login/>}/>
               <Route exact path='/register' element={<Register theme={theme}/>}/>
               <Route exact path='/register/complete' element={<RegisterFinal/>}/>
