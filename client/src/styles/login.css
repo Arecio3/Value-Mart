@@ -13,9 +13,9 @@
     max-width: 200px;
     left: -12rem;
     top: 4rem;
-    
 }
 .loginImg2 {
+    opacity: 0%;
     position: absolute;
     border-radius: 50%;
     max-height: 250px;
@@ -23,12 +23,21 @@
     left: -3rem;
 }
 .loginContainer {
-    /* background-color: #fff; */
+    background-color: #fff;
     height: 100vh;
     margin-top: -1rem;
 }
+.darkLoginContainer {
+    background-color: #4380b1;
+    height: 100vh;
+}
 .login-heading {
     color: #1890ff;
+    font-weight: 200;
+    font-size: 40px;
+}
+.login-heading-dark {
+    color: #fff;
     font-weight: 200;
     font-size: 40px;
 }
@@ -43,10 +52,11 @@
 }
 
 .google-btn {
-    left: -2rem;
+    left: .1rem;
 }
 
 .fgmp {
+    background-color: #fff;
     color: crimson;
     border: none;
     position: absolute;
@@ -54,8 +64,8 @@
     padding: 10px;
     top: 352px;
     right: 2rem;
-
 }
+
 .fgmp:hover {
     background-color: crimson;
     color: white;
@@ -64,6 +74,7 @@
 
 @media screen and (min-width: 1200px) {
     .loginImg2 {
+        opacity: 100%;
         max-height: 550px;
         max-width: 500px;
         left: -3rem;

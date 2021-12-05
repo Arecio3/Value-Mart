@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 require("firebase/auth");
 
 toast.configure()
-const Login = () => {
+const Login = ({theme}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
@@ -119,13 +119,13 @@ useEffect(() => {
     
 
     return (
-        <div className='loginContainer'>
+        <div className={theme === "dark" ? "darkLoginContainer" :'loginContainer'}>
         <div className="container p-5">
             <div className="row">
                 <div className="col-md-6 offset-md-3">
                     { !loading ? (
 
-                        <h1 className='login-heading'>{t('Login')}</h1>
+                        <h1 className={theme === "dark" ? "login-heading-dark" : 'login-heading'}>{t('Login')}</h1>
                     ) : (
 
                         <h4 className='login-loading'>{t('Loading')} <LoadingOutlined style={{color: '#d2d2d2'}}/></h4>
