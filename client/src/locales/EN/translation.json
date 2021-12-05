@@ -12,5 +12,11 @@
     "Display": "Display",
     "Logout": "Logout",
     "RegisterNow": "Register now a FREE account",
-    "RegisterSubHead": "Start shoppping right now!"
+    "RegisterSubHead": "Start shoppping right now!",
+    "Loading": "Loading",
+    "ForgotPassword": "Forgot Password",
+    "GOOGLogin": "Google Login",
+    "YourPassword": "Password",
+    "YourEmail": "Email",
+    "YourName": "First Name"
 }

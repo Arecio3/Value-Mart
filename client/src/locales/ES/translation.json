@@ -12,5 +12,11 @@
     "Display": "Pantalla",
     "Logout": "Salir",
     "RegisterNow": "Registrarse una cuenta Gratis!",
-    "RegisterSubHead": "Empieza comprar ahora mismo!"
+    "RegisterSubHead": "Empieza comprar ahora mismo!",
+    "Loading": "Cargando",
+    "ForgotPassword": "Olvidado su contraseña?",
+    "GOOGLogin": "Abrir con Google",
+    "YourPassword": "Contraseña",
+    "YourEmail": "Correo Electrónico",
+    "FirstName": "Su nombre"
 }

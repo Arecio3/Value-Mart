@@ -8,6 +8,7 @@ import { MailOutlined, LoadingOutlined, GoogleOutlined } from '@ant-design/icons
 import { Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
 require("firebase/auth");
 
 toast.configure()
@@ -20,7 +21,7 @@ const Login = () => {
     let navigate = useNavigate();
 
     const {user} = useSelector((state) => ({...state}));
-
+    const { t } = useTranslation();
 
     function showPass() {
     var x = document.getElementById("myInput");
@@ -89,7 +90,7 @@ useEffect(() => {
     const loginForm = () => 
         <form onSubmit={handleLogin}>
             <input
-             placeholder='Your email' 
+             placeholder='Email' 
              type="email" 
              className="form-control email-form" 
              value={email} 
@@ -98,7 +99,7 @@ useEffect(() => {
              />
             <input
              id="myInput"
-             placeholder='Your password' 
+             placeholder='Password' 
              type="password" 
              className="form-control email-form" 
              value={password} 
@@ -113,7 +114,7 @@ useEffect(() => {
              icon={<MailOutlined/>}
              size='large'
              disabled={!email || password.length < 6}
-             > Login</Button>
+             > {t('Login')}</Button>
         </form>
     
 
@@ -124,10 +125,10 @@ useEffect(() => {
                 <div className="col-md-6 offset-md-3">
                     { !loading ? (
 
-                        <h1 className='login-heading'>Login</h1>
+                        <h1 className='login-heading'>{t('Login')}</h1>
                     ) : (
 
-                        <h4 className='login-loading'>Loading <LoadingOutlined style={{color: '#d2d2d2'}}/></h4>
+                        <h4 className='login-loading'>{t('Loading')} <LoadingOutlined style={{color: '#d2d2d2'}}/></h4>
                     )}
                 
                     {loginForm()}
@@ -138,8 +139,8 @@ useEffect(() => {
                     shape='round'
                     icon={<GoogleOutlined/>}
                     size='large'
-                    >Google Login</Button>
-                    <Link to="/forgot/password" className='fgmp'>Forgot Password</Link>
+                    >{t("GOOGLogin")}</Button>
+                    <Link to="/forgot/password" className='fgmp'>{t('ForgotPassword')}</Link>
                 </div>
             </div>
             <div className="img1-box img-fluid">
