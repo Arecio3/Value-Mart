@@ -13,7 +13,6 @@ import { auth } from './firebase';
 import { useDispatch } from 'react-redux';
 
 
-
 const App = () => {
   const [theme, setTheme] = useState("dark");
   const dispatch = useDispatch()

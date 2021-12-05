@@ -13,16 +13,16 @@
 }
 
 .dark {
-    color: #fff;
+    color: #fff !important;
 }
 
 .light {
     color: black;
 }
 .dark-mode {
-    background-color: #DBD8E3!important;
-    color: #1890ff !important;
-    /* border-bottom: #1890ff 2px solid !important; */
+    background-color: #0B1340!important;
+    color: #FFF !important;
+    border-bottom: none !important;
 }
 
 @media screen and (min-width: 1200px){
