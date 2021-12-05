@@ -2,6 +2,11 @@
     color: #c7c6c1;
 }
 
+.dm-container {
+    z-index: 0;
+    height: 100vh;
+    background-color: #23395d;
+}
 .heading {
     font-size: 33px;
 }

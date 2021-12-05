@@ -11,6 +11,7 @@
 .logo {
     display: none !important;
 }
+
 .dark {
     color: #fff;
 }
@@ -19,8 +20,8 @@
     color: black;
 }
 .dark-mode {
-    background-color: darkgray!important;
-    color: #fff !important;
+    background-color: #DBD8E3!important;
+    color: #1890ff !important;
     /* border-bottom: #1890ff 2px solid !important; */
 }
 

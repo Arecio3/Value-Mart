@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 require("firebase/auth");
 
 toast.configure()
-const Register = () => {
+const Register = ({theme}) => {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     let navigate = useNavigate();
@@ -64,10 +64,10 @@ const Register = () => {
     
 
     return (
-        <div className="container p-5">
-            <div className="row">
+        <div className={theme === "dark" ? "dm-container p-5" : "container p-5"}>
+            <div className={theme === "dark" ? "row text-white" : "row"}>
                 <div className="col-md-6 offset-md-3">
-                    <h2 className='heading'>Register Now</h2>
+                    <h2 className={theme === "dark" ? "text-white heading" : 'heading'}>Register Now</h2>
                     <h6 className='subhead'>Start shopping today !</h6>
                     {registerForm()}
                 </div>

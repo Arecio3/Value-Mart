@@ -61,7 +61,7 @@ const App = () => {
           <Routes>
               <Route exact path='/' element={<Home />}/>
               <Route exact path='/login' element={<Login/>}/>
-              <Route exact path='/register' element={<Register/>}/>
+              <Route exact path='/register' element={<Register theme={theme}/>}/>
               <Route exact path='/register/complete' element={<RegisterFinal/>}/>
               <Route exact path='/forgot/password' element={<ForgotPassword/>}/>
           </Routes>
