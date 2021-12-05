@@ -1,3 +1,14 @@
 {
-    "Home": "Home"
+    "Home": "Home",
+    "Register": "Register",
+    "Login": "Login",
+    "CreateAccount": "Create Account",
+    "Settings": "Settings",
+    "English": "English",
+    "Spanish": "Spanish",
+    "Hello": "Hello,",
+    "Languages": "Languages",
+    "Theme": "Theme",
+    "Display": "Display",
+    "Logout": "Logout"
 }

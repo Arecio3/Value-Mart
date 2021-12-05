@@ -1,3 +1,14 @@
 {
-    "Home": "Principal"
+    "Home": "Principal",
+    "Register": "Registrarse",
+    "Login": "Acceso",
+    "CreateAccount": "Crear una cuenta",
+    "Settings": "Ajustes",
+    "English": "Inglés",
+    "Spanish": "Español",
+    "Hello": "Hola,",
+    "Languages": "Idiomas",
+    "Theme": "Alternar Tema",
+    "Display": "Pantalla",
+    "Logout": "Salir"
 }

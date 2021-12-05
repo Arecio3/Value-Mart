@@ -41,8 +41,9 @@ const Header = ({theme, setTheme}) => {
       navigate('/login')
     }
     
-    const nickname = `Hello, ${user?.email && user.email.split('@')[0]}`
-    
+    const nickname = () => {
+      return (<>{t('Hello')} {`${user?.email && user.email.split('@')[0]}`}</>
+      )}
     const { t } = useTranslation();
     return (
         <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" className={theme === "dark" ? "dark-mode" : 'nav-container'}>
@@ -50,25 +51,25 @@ const Header = ({theme, setTheme}) => {
           <Link to="/" className={theme === "dark" ? "dark": "light"}>{t('Home')}</Link>
         </Item>
         {!user && (<Item key="register" icon={<UserAddOutlined />} className="float-right">
-          <Link to="/register" className={theme === "dark" ? "dark": "light"}>Register</Link>
+          <Link to="/register" className={theme === "dark" ? "dark": "light"}>{t('Register')}</Link>
         </Item>)}
         {!user && (<Item key="login" icon={<UserOutlined/>} className="float-right">
-          <Link to="/login" className={theme === "dark" ? "dark": "light"}>Login</Link>
+          <Link to="/login" className={theme === "dark" ? "dark": "light"}>{t('Login')}</Link>
         </Item>)}
-        {user && (<SubMenu className={user ? "float-right" : "float-left"} key="SubMenu" icon={<UserOutlined />} title={nickname}>
-            {user ? "" : <Item key="setting:1"><Link to="/login">Login</Link></Item>}
-            {user ? "" : <Item key="setting:2"><Link to="/register">Create Account</Link></Item>}
-            <Item icon={<SettingOutlined />}><Link to="/settings">Settings</Link></Item>
-            <SubMenu key="sub3" title="Display" icon={<EyeOutlined />}>
-              <ItemGroup title="Langauges">
-              <Item onClick={() => i18n.changeLanguage('en')}><div><img className="flag" src={us} alt="us flag" />English</div></Item>
-              <Item onClick={() => i18n.changeLanguage('es')}><div><img className="flag" src={cuba} alt="cuba flag" />Spanish</div></Item>
+        {user && (<SubMenu className={user ? "float-right" : "float-left"} key="SubMenu" icon={<UserOutlined />} title={nickname()}>
+            {user ? "" : <Item key="setting:1"><Link to="/login">{t('Login')}</Link></Item>}
+            {user ? "" : <Item key="setting:2"><Link to="/register">{t('CreateAccount')}</Link></Item>}
+            <Item icon={<SettingOutlined />}><Link to="/settings">{t('Settings')}</Link></Item>
+            <SubMenu key="sub3" title={t("Display")} icon={<EyeOutlined />}>
+              <ItemGroup title={t('Languages')}>
+              <Item onClick={() => i18n.changeLanguage('en')}><div><img className="flag" src={us} alt="us flag" />{t('English')}</div></Item>
+              <Item onClick={() => i18n.changeLanguage('es')}><div><img className="flag" src={cuba} alt="cuba flag" />{t('Spanish')}</div></Item>
               </ItemGroup>
-              <ItemGroup title="Theme">
+              <ItemGroup title={t("Theme")}>
               <Item key="12" icon={<DesktopOutlined />} onClick={changeTheme}><Switch checkedChildren={<i class="fas fa-sun"></i>} unCheckedChildren={<i class="far fa-moon"></i>} defaultChecked /></Item>
               </ItemGroup>
             </SubMenu>
-            <Item icon={<LogoutOutlined />} style={{color: 'red'}} onClick={logout}><Link to="/register">Logout</Link></Item>
+            <Item icon={<LogoutOutlined />} style={{color: 'red'}} onClick={logout}><Link to="/register">{t('Logout')}</Link></Item>
         </SubMenu>
         )}
       </Menu>
