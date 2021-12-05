@@ -6,27 +6,30 @@ import { Link } from 'react-router-dom';
 import firebase from 'firebase/compat';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
+import i18n  from "../../i18n";
 
-const { SubMenu, Item } = Menu;
+const { SubMenu, Item, ItemGroup } = Menu;
 
 const Header = ({theme, setTheme}) => {
     const [current, setCurrent] = useState('home')
     const dispatch = useDispatch();
     const {user} = useSelector((state) => ({...state}));
     let navigate = useNavigate();
-  // For active border highlight
+
+    // For active border highlight
     const handleClick = (e) => {
-     setCurrent(e.key)
+      setCurrent(e.key)
     }
 
     function changeTheme() {
       if (theme === "light") {
-          setTheme("dark");
+        setTheme("dark");
       } else {
-          setTheme("light");
+        setTheme("light");
       }
-  };
-
+    };
+    
     const logout = () => {
       firebase.auth().signOut();
       dispatch({
@@ -35,13 +38,14 @@ const Header = ({theme, setTheme}) => {
       });
       navigate('/login')
     }
-
+    
     const nickname = `Hello, ${user?.email && user.email.split('@')[0]}`
-
+    
+    const { t } = useTranslation();
     return (
         <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" className={theme === "dark" ? "dark-mode" : 'nav-container'}>
         <Item  key="home" icon={<HomeOutlined />}>
-          <Link to="/" className={theme === "dark" ? "dark": "light"}>Home</Link>
+          <Link to="/" className={theme === "dark" ? "dark": "light"}>{t('Home')}</Link>
         </Item>
         {!user && (<Item key="register" icon={<UserAddOutlined />} className="float-right">
           <Link to="/register" className={theme === "dark" ? "dark": "light"}>Register</Link>
@@ -54,8 +58,13 @@ const Header = ({theme, setTheme}) => {
             {user ? "" : <Item key="setting:2"><Link to="/register">Create Account</Link></Item>}
             <Item icon={<SettingOutlined />}><Link to="/settings">Settings</Link></Item>
             <SubMenu key="sub3" title="Display" icon={<EyeOutlined />}>
-              <Item>Language <Switch  checkedChildren="EN" unCheckedChildren="ES" defaultChecked /></Item>
+              <ItemGroup title="Langauges">
+              <Item onClick={() => i18n.changeLanguage('en')}>English</Item>
+              <Item onClick={() => i18n.changeLanguage('es')}>Spanish</Item>
+              </ItemGroup>
+              <ItemGroup title="Theme">
               <Item key="12" icon={<DesktopOutlined />} onClick={changeTheme}><Switch checkedChildren={<i class="fas fa-sun"></i>} unCheckedChildren={<i class="far fa-moon"></i>} defaultChecked /></Item>
+              </ItemGroup>
             </SubMenu>
             <Item icon={<LogoutOutlined />} style={{color: 'red'}} onClick={logout}><Link to="/register">Logout</Link></Item>
         </SubMenu>
