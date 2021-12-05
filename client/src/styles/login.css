@@ -23,7 +23,7 @@
     left: -3rem;
 }
 .loginContainer {
-    background-color: #fff;
+    background-color: #fff !important;
     height: 100vh;
     margin-top: -1rem;
 }
@@ -32,7 +32,7 @@
     height: 100vh;
 }
 .login-heading {
-    color: #1890ff;
+    color: #1890ff !important;
     font-weight: 200;
     font-size: 40px;
 }
