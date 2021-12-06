@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Menu, Switch } from 'antd';
+import { Menu, Switch, PageHeader } from 'antd';
 import { UserAddOutlined, HomeOutlined, SettingOutlined, UserOutlined, LogoutOutlined, DesktopOutlined, EyeOutlined } from '@ant-design/icons';
 import '../../styles/header.css';
 import { Link } from 'react-router-dom';
@@ -46,6 +46,10 @@ const Header = ({theme, setTheme}) => {
       )}
     const { t } = useTranslation();
     return (
+      <>
+        <div className="logo-title-container">
+          <h2 className='logo-title'>Value-Mart</h2>
+        </div>
         <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" className={theme === "dark" ? "dark-mode" : 'nav-container'}>
         <Item  key="home" icon={<HomeOutlined />}>
           <Link to="/" className={theme === "dark" ? "dark": "light"}>{t('Home')}</Link>
@@ -82,6 +86,7 @@ const Header = ({theme, setTheme}) => {
               </ItemGroup>
         </SubMenu>)}
       </Menu>
+      </>
     )
 }
 
