@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Menu, Switch, PageHeader } from 'antd';
-import { UserAddOutlined, HomeOutlined, SettingOutlined, UserOutlined, LogoutOutlined, DesktopOutlined, EyeOutlined } from '@ant-design/icons';
+import { Menu, Switch } from 'antd';
+import { UserAddOutlined, HomeOutlined, SettingOutlined, UserOutlined, LogoutOutlined, DesktopOutlined, EyeOutlined, GlobalOutlined } from '@ant-design/icons';
 import '../../styles/header.css';
 import { Link } from 'react-router-dom';
 import firebase from 'firebase/compat';
@@ -77,13 +77,13 @@ const Header = ({theme, setTheme}) => {
         </SubMenu>
         )}
         {!user && (<SubMenu title="Guest" icon={<UserOutlined />} className='float-left'>
-        <ItemGroup title={t('Languages')}>
+          <ItemGroup title={t('Languages')}>
               <Item onClick={() => i18n.changeLanguage('en')}><div><img className="flag" src={us} alt="us flag" />{t('English')}</div></Item>
               <Item onClick={() => i18n.changeLanguage('es')}><div><img className="flag" src={cuba} alt="cuba flag" />{t('Spanish')}</div></Item>
               </ItemGroup>
               <ItemGroup title={t("Theme")}>
               <Item key="12" icon={<DesktopOutlined />} onClick={changeTheme}><Switch checkedChildren={<i class="fas fa-sun"></i>} unCheckedChildren={<i class="far fa-moon"></i>} defaultChecked /></Item>
-              </ItemGroup>
+          </ItemGroup>
         </SubMenu>)}
       </Menu>
       </>
