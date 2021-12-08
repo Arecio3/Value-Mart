@@ -9,9 +9,21 @@ import { Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
+import axios from 'axios';
 require("firebase/auth");
 
 toast.configure()
+
+// Sends token to backend
+const createOrUpdateUser = async (authToken) => {
+    // Leave body empty because the token is in header
+    return await axios.post(`${process.env.REACT_APP_API}/create-or-update-user`, {}, {
+        headers: {
+            authToken: authToken,
+        }
+    })
+}
+
 const Login = ({theme}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -50,16 +62,20 @@ useEffect(() => {
         const result = await auth.signInWithEmailAndPassword(email, password)
         // console.log(result)
         const { user } = result
-        const idTokenResult = await user.getIdTokenResult()
+        const idTokenResult = await user.getIdTokenResult();
+
+        createOrUpdateUser(idTokenResult.token)
+        .then((res) => console.log('Created or updated a user!', res))
+        .catch()
         // Dispatch result to redux
-        dispatch({
-            type: "LOGGED_IN_USER",
-            payload: {
-              email: user.email,
-              token: idTokenResult.token
-            },
-          });
-          navigate('/')
+        // dispatch({
+        //     type: "LOGGED_IN_USER",
+        //     payload: {
+        //       email: user.email,
+        //       token: idTokenResult.token
+        //     },
+        //   });
+        //   navigate('/')
     } catch (error) {
         console.log(error)
         toast.error(error.message)
