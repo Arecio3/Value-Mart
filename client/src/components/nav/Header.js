@@ -64,13 +64,13 @@ const Header = ({theme, setTheme}) => {
             {user ? "" : <Item key="setting:1"><Link to="/login">{t('Login')}</Link></Item>}
             {user ? "" : <Item key="setting:2"><Link to="/register">{t('CreateAccount')}</Link></Item>}
             <Item icon={<SettingOutlined />}><Link to="/settings">{t('Settings')}</Link></Item>
-            <SubMenu key="sub3" title={t("Display")} icon={<EyeOutlined />}>
+            <SubMenu key="setting:3" title={t("Display")} icon={<EyeOutlined />}>
               <ItemGroup title={t('Languages')}>
               <Item onClick={() => i18n.changeLanguage('en')}><div><img className="flag" src={us} alt="us flag" />{t('English')}</div></Item>
               <Item onClick={() => i18n.changeLanguage('es')}><div><img className="flag" src={cuba} alt="cuba flag" />{t('Spanish')}</div></Item>
               </ItemGroup>
               <ItemGroup title={t("Theme")}>
-              <Item key="12" icon={<DesktopOutlined />} onClick={changeTheme}><Switch checkedChildren={<i class="fas fa-sun"></i>} unCheckedChildren={<i class="far fa-moon"></i>} defaultChecked /></Item>
+              <Item key="12" icon={<DesktopOutlined />} onClick={changeTheme}><Switch checkedChildren={<i className="fas fa-sun"></i>} unCheckedChildren={<i className="far fa-moon"></i>} defaultChecked /></Item>
               </ItemGroup>
             </SubMenu>
             <Item icon={<LogoutOutlined />} style={{color: 'red'}} onClick={logout}><Link to="/register">{t('Logout')}</Link></Item>
@@ -82,7 +82,7 @@ const Header = ({theme, setTheme}) => {
               <Item onClick={() => i18n.changeLanguage('es')}><div><img className="flag" src={cuba} alt="cuba flag" />{t('Spanish')}</div></Item>
               </ItemGroup>
               <ItemGroup title={t("Theme")}>
-              <Item key="12" icon={<DesktopOutlined />} onClick={changeTheme}><Switch checkedChildren={<i class="fas fa-sun"></i>} unCheckedChildren={<i class="far fa-moon"></i>} defaultChecked /></Item>
+              <Item key="12" icon={<DesktopOutlined />} onClick={changeTheme}><Switch checkedChildren={<i className="fas fa-sun"></i>} unCheckedChildren={<i className="far fa-moon"></i>} defaultChecked /></Item>
           </ItemGroup>
         </SubMenu>)}
       </Menu>

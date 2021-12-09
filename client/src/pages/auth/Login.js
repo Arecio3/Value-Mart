@@ -65,17 +65,21 @@ useEffect(() => {
         const idTokenResult = await user.getIdTokenResult();
 
         createOrUpdateUser(idTokenResult.token)
-        .then((res) => console.log('Created or updated a user!', res))
-        .catch()
+        .then((res) => {
         // Dispatch result to redux
-        // dispatch({
-        //     type: "LOGGED_IN_USER",
-        //     payload: {
-        //       email: user.email,
-        //       token: idTokenResult.token
-        //     },
-        //   });
-        //   navigate('/')
+        dispatch({
+            type: "LOGGED_IN_USER",
+            payload: {
+              name: res.data.name,
+              email: res.data.email,
+              token: idTokenResult.token,
+              role: res.data.role,
+              _id: res.data._id,
+            },
+          })
+        })
+        .catch()
+        navigate('/');
     } catch (error) {
         console.log(error)
         toast.error(error.message)

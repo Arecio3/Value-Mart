@@ -1,5 +1,20 @@
-exports.createOrUpdateUser = (req,res) => {
-    res.json({
-        data: 'Hey you create or update user'
-    });
+const User = require('../models/user');
+
+exports.createOrUpdateUser = async (req,res) => {
+   const { name, picture, email } = req.user;
+    // Find user based on email and updates name and picture, sends back new user
+   const user = await User.findOneAndUpdate({email}, {name, picture}, {new: true});
+    // If theres a user it sends data if not create a new user
+   if(user) {
+       res.json(user)
+    //    console.log("User updated", user)
+   } else {
+    const newUser = await new User({
+        email,
+        name,
+        picture,
+    }).save();
+    // console.log("User created", newUser)
+    res.json(newUser);
+   }
 };
