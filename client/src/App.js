@@ -12,6 +12,7 @@ import { ThemeProvider } from "styled-components";
 import { auth } from './firebase'; 
 import { useDispatch } from 'react-redux';
 import { currentUser } from './functions/auth';
+import History from './pages/user/History';
 
 const App = () => {
   const [theme, setTheme] = useState("dark");
@@ -71,6 +72,7 @@ const App = () => {
               <Route exact path='/register' element={<Register theme={theme}/>}/>
               <Route exact path='/register/complete' element={<RegisterFinal/>}/>
               <Route exact path='/forgot/password' element={<ForgotPassword/>}/>
+              <Route exact path='/user/history' element={<History/>}/>
           </Routes>
     </ThemeProvider>
     </>
