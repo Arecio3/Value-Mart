@@ -6,14 +6,23 @@ import { auth } from '../../firebase';
 import { toast } from 'react-toastify';
 import '../../styles/registerfinal.css';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {createOrUpdateUser} from '../../functions/auth';
 require("firebase/auth");
 
-toast.configure()
-const RegisterFinal = ({history}) => {
+
+toast.configure();
+
+const RegisterFinal = () => {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
+
     let navigate = useNavigate();
+    // Acces user from state
+    const {user} = useSelector((state) => ({...state}));
+    let dispatch = useDispatch();
+
 
     // Grabs email from local Storage and sets it to the email state
     useEffect(() => {
@@ -40,7 +49,22 @@ const RegisterFinal = ({history}) => {
                 // Get id
                 const idTokenResult = await user.getIdTokenResult();
                 // populate user to redux store
-                console.log(idTokenResult)
+                // console.log(idTokenResult)
+                createOrUpdateUser(idTokenResult.token)
+                .then((res) => {
+                        // Dispatch result to redux
+                        dispatch({
+                        type: "LOGGED_IN_USER",
+                        payload: {
+                        name: res.data.name,
+                        email: res.data.email,
+                        token: idTokenResult.token,
+                        role: res.data.role,
+                        _id: res.data._id,
+                        },
+                     });
+                 })
+                .catch();
                 // redirect user back
                 navigate("/");
             }

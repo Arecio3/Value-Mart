@@ -9,20 +9,10 @@ import { Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
-import axios from 'axios';
+import {createOrUpdateUser} from '../../functions/auth';
 require("firebase/auth");
 
 toast.configure()
-
-// Sends token to backend
-const createOrUpdateUser = async (authToken) => {
-    // Leave body empty because the token is in header
-    return await axios.post(`${process.env.REACT_APP_API}/create-or-update-user`, {}, {
-        headers: {
-            authToken: authToken,
-        }
-    })
-}
 
 const Login = ({theme}) => {
     const [email, setEmail] = useState("");
@@ -76,9 +66,9 @@ useEffect(() => {
               role: res.data.role,
               _id: res.data._id,
             },
-          })
+          });
         })
-        .catch()
+        .catch();
         navigate('/');
     } catch (error) {
         console.log(error)
@@ -91,13 +81,21 @@ useEffect(() => {
         auth.signInWithPopup(googleAuthProvider).then(async(result) => {
             const {user} = result
             const idTokenResult = await user.getIdTokenResult();
+            createOrUpdateUser(idTokenResult.token)
+            .then((res) => {
+            // Dispatch result to redux
             dispatch({
                 type: "LOGGED_IN_USER",
                 payload: {
-                  email: user.email,
-                  token: idTokenResult.token
+                  name: res.data.name,
+                  email: res.data.email,
+                  token: idTokenResult.token,
+                  role: res.data.role,
+                  _id: res.data._id,
                 },
               });
+            })
+            .catch()
             navigate('/');
         })
         .catch((error) =>  {

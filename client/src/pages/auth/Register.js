@@ -62,7 +62,7 @@ const Register = ({theme}) => {
              value={name} 
              onChange={(e) => setName(e.target.value)} 
              />
-             <button type="submit" className="btn btn-blue m-3">{t('Register')} {email} </button>
+             <button onClick={handleSubmit} className="btn btn-blue m-3">{t('Register')} {email}</button>
         </form>
     
 
