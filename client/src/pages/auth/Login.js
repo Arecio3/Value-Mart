@@ -12,36 +12,45 @@ import { useTranslation } from "react-i18next";
 import {createOrUpdateUser} from '../../functions/auth';
 require("firebase/auth");
 
-toast.configure()
+toast.configure();
+
 
 const Login = ({theme}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
 
-    let dispatch = useDispatch();
     let navigate = useNavigate();
-
+    let dispatch = useDispatch();
+    
     const {user} = useSelector((state) => ({...state}));
     const { t } = useTranslation();
+    
+    useEffect(() => {
+        if(user && user.token) {
+            navigate('/')
+        }  else {
+            return
+        }
+    }, [navigate, user]);
+
 
     function showPass() {
-    var x = document.getElementById("myInput");
-    if (x.type === "password") {
-    x.type = "text";
-    } else {
-    x.type = "password";
-  }
-}
-
-useEffect(() => {
-    if(user && user.token) {
-        navigate('/')
-    }  else {
-        return
+        var x = document.getElementById("myInput");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
     }
-}, [navigate, user]);
 
+    const roleBasedRedirect = (res) => {
+        if(res.data.role === 'admin') {
+            navigate('/admin/dashboard');
+        } else {
+            navigate('/user/history')
+        }
+    }
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -67,9 +76,10 @@ useEffect(() => {
               _id: res.data._id,
             },
           });
+          roleBasedRedirect(res)
         })
         .catch(err => console.log(err))
-        navigate('/');
+        // navigate('/');
     } catch (error) {
         console.log(error)
         toast.error(error.message)
@@ -94,9 +104,10 @@ useEffect(() => {
                   _id: res.data._id,
                 },
               });
+              roleBasedRedirect(res)
             })
             .catch(err => console.log(err))
-            navigate('/');
+            // navigate('/');
         })
         .catch((error) =>  {
             console.log(error);
