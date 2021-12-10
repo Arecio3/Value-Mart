@@ -64,8 +64,8 @@ const RegisterFinal = () => {
                         },
                      });
                  })
-                .catch();
-                // redirect user back
+                 .catch(err => console.log(err))
+                 // redirect user back
                 navigate("/");
             }
         } catch (error) {

@@ -68,7 +68,7 @@ useEffect(() => {
             },
           });
         })
-        .catch();
+        .catch(err => console.log(err))
         navigate('/');
     } catch (error) {
         console.log(error)
@@ -95,7 +95,7 @@ useEffect(() => {
                 },
               });
             })
-            .catch()
+            .catch(err => console.log(err))
             navigate('/');
         })
         .catch((error) =>  {
