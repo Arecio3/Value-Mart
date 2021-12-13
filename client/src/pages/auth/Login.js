@@ -4,12 +4,13 @@ import bg3 from '../../assets/login3.png';
 import '../../styles/login.css';
 import { auth, googleAuthProvider } from '../../firebase';
 import { toast } from 'react-toastify';
-import { MailOutlined, LoadingOutlined, GoogleOutlined } from '@ant-design/icons';
+import { MailOutlined,  GoogleOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import {createOrUpdateUser} from '../../functions/auth';
+import Spinner from '../../components/spinner/Spinner';
 require("firebase/auth");
 
 toast.configure();
@@ -157,7 +158,7 @@ const Login = ({theme}) => {
                         <h1 className={theme === "dark" ? "login-heading-dark" : 'login-heading'}>{t('Login')}</h1>
                     ) : (
 
-                        <h4 className='login-loading'>{t('Loading')} <LoadingOutlined style={{color: '#d2d2d2'}}/></h4>
+                        <Spinner />
                     )}
                 
                     {loginForm()}
