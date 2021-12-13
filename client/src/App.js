@@ -13,6 +13,9 @@ import { auth } from './firebase';
 import { useDispatch } from 'react-redux';
 import { currentUser } from './functions/auth';
 import UserRoute from './components/routes/UserRoute';
+import Password from "./pages/user/Password";
+import Wishlist from "./pages/user/Wishlist";
+
 const App = () => {
   const [theme, setTheme] = useState("dark");
   const dispatch = useDispatch()
@@ -71,7 +74,9 @@ const App = () => {
               <Route exact path='/register' element={<Register theme={theme}/>}/>
               <Route exact path='/register/complete' element={<RegisterFinal/>}/>
               <Route exact path='/forgot/password' element={<ForgotPassword/>}/>
-              <Route exact path='/user/history' element={<UserRoute/>}/>
+              <Route exact path='/user/history' element={<UserRoute theme={theme}/>}/>
+              <Route exact path='/user/password' element={<Password theme={theme}/>}/>
+              <Route exact path='/user/wishlist' element={<Wishlist/>}/>
           </Routes>
     </ThemeProvider>
     </>

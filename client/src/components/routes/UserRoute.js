@@ -4,12 +4,12 @@ import History from "../../pages/user/History";
 import Spinner from "../spinner/Spinner";
 import LoadingToRedirect from "./LoadingToRedirect";
 
-const UserRoute = ({ children, ...rest }) => {
+const UserRoute = ({ theme }) => {
   const { user } = useSelector((state) => ({ ...state }));
 
   return user && user.token ? (
     <>
-      <History />
+      <History theme={theme}/>
     </>
   ) : (
     <>
