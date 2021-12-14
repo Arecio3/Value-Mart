@@ -6,7 +6,7 @@ import { auth } from '../../firebase';
 import { toast } from 'react-toastify';
 import '../../styles/registerfinal.css';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {createOrUpdateUser} from '../../functions/auth';
 require("firebase/auth");
 
@@ -20,7 +20,6 @@ const RegisterFinal = () => {
 
     let navigate = useNavigate();
     // Acces user from state
-    const {user} = useSelector((state) => ({...state}));
     let dispatch = useDispatch();
 
 

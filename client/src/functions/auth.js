@@ -18,3 +18,12 @@ export const currentUser = async (authToken) => {
         }
     })
 };
+// Gets current admin
+export const currentAdmin = async (authToken) => {
+    // Leave body empty because the token is in header
+    return await axios.post(`${process.env.REACT_APP_API}/current-admin`, {}, {
+        headers: {
+            authToken: authToken,
+        }
+    })
+};
