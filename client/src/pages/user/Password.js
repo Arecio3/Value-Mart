@@ -18,6 +18,7 @@ const Password = ({theme}) => {
       await auth.currentUser.updatePassword(password)
       .then(() => {
         setLoading(false)
+        setPassword("")
         toast.success(`Password was updated!`)
       })
       .catch(err => {
@@ -49,8 +50,9 @@ const Password = ({theme}) => {
               className="form-control mt-2" 
               placeholder="Enter your new password"
               disabled={loading}
+              value={password}
               />
-              <button className="btn btn-primary mt-3" disabled={!password || loading}>Change Password</button>
+              <button className="btn btn-primary mt-3" disabled={!password || password.length < 6 || loading }>Change Password</button>
             </div>
           </form>
         </div>
