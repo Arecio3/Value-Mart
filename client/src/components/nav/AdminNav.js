@@ -7,9 +7,9 @@ import { GiTicket } from 'react-icons/gi';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { BsFillDiagram2Fill } from "react-icons/bs";
 import { AppstoreAddOutlined } from '@ant-design/icons';
+import '../../styles/adminDash.css'
 
-
-const AdminNav = () => {
+const AdminNav = ({theme}) => {
 
     return (
         <nav>

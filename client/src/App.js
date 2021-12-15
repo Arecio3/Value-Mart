@@ -15,6 +15,7 @@ import { currentUser } from './functions/auth';
 import UserRoute from './components/routes/UserRoute';
 import AdminRoute from './components/routes/AdminRoute';
 import Password from "./pages/user/Password";
+import CategoryCreate from "./pages/admin/category/CategoryCreate";
 import Wishlist from "./pages/user/Wishlist";
 
 const App = () => {
@@ -78,7 +79,8 @@ const App = () => {
               <Route exact path='/user/history' element={<UserRoute theme={theme}/>}/>
               <Route exact path='/user/password' element={<Password theme={theme}/>}/>
               <Route exact path='/user/wishlist' element={<Wishlist/>}/>
-              <Route exact path='/admin/dashboard' element={<AdminRoute/>}/>
+              <Route exact path='/admin/dashboard' element={<AdminRoute theme={theme}/>}/>
+              <Route exact path='/admin/category' element={<CategoryCreate theme={theme}/>}/>
           </Routes>
     </ThemeProvider>
     </>

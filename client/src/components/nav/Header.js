@@ -99,7 +99,7 @@ const Header = ({ theme, setTheme }) => {
           <SubMenu
             className={user ? "float-right" : "float-left"}
             key="SubMenu"
-            icon={user.role === "user" ? <UserOutlined /> : <FaUserShield />}
+            icon={user.role === "subscriber" ? <UserOutlined /> : <FaUserShield />}
             title={nickname()}
           >
             {user ? (
