@@ -18,7 +18,7 @@ import { useTranslation } from "react-i18next";
 import i18n from "../../i18n";
 import cuba from "../../assets/cuba.png";
 import us from "../../assets/united-states-of-america.png";
-import { FaStore } from 'react-icons/fa';
+import { FaStore, FaUserShield } from 'react-icons/fa';
 import { RiDashboardFill } from 'react-icons/ri';
 const { SubMenu, Item, ItemGroup } = Menu;
 
@@ -99,7 +99,7 @@ const Header = ({ theme, setTheme }) => {
           <SubMenu
             className={user ? "float-right" : "float-left"}
             key="SubMenu"
-            icon={<UserOutlined />}
+            icon={user.role === "user" ? <UserOutlined /> : <FaUserShield />}
             title={nickname()}
           >
             {user ? (
