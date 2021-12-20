@@ -4,7 +4,11 @@ import { toast } from 'react-toastify';
 import { useSelector } from "react-redux";
 import { createCategory, getCategories, removeCategory } from '../../../functions/category';
 import '../../../styles/adminDark.css'
+import '../../../styles/catCreate.css'
 import Spinner from '../../../components/spinner/Spinner'
+import { Link } from "react-router-dom";
+import { AiOutlineEdit } from 'react-icons/ai'
+import { MdDelete } from 'react-icons/md'
 
 const CategoryCreate = ({theme}) => {
   const [name, setName] = useState("");
@@ -50,8 +54,11 @@ const CategoryCreate = ({theme}) => {
           </form>
           <hr />
           {categories.map((c) => (
-          <div className="alert alert-primary" key={c._id}>
-            {c.name}
+          <div className="alert alert-primary catContainer" key={c._id}>
+            {c.name} <span className="btn btn-sm deleteBtn"><MdDelete className="text-danger"/></span> 
+            <Link className="btn btn-sm editBtn" to={`/admin/category/${c.slug}`}>
+              <AiOutlineEdit className="text-info"/>
+              </Link>
           </div>
           ))}
         </div>

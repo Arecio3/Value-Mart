@@ -1,0 +1,10 @@
+.deleteBtn {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+.editBtn {
+    position: absolute;
+    right: 85px;
+    top: 5px;
+}
