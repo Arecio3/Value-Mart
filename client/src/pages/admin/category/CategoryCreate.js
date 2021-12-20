@@ -14,6 +14,7 @@ const CategoryCreate = ({theme}) => {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
+  // const [deleteCat, setDeleteCat] = useState(false);
   const { user } = useSelector((state) => ({ ...state }));
 
   useEffect(() => {
@@ -31,12 +32,34 @@ const CategoryCreate = ({theme}) => {
       setLoading(false)
       setName('')
       toast.success(`Awesome! ${name} Category was created !`);
+      loadCategories();
     })
     .catch((err) => {
       console.log(err)
       setLoading(false)
       toast.error(err)
     })
+  }
+
+  const handleRemove = async(slug) => {
+    // let answer = toast.warning(
+    // <>You are about to delete the {slug.charAt(0).toUpperCase() + slug.slice(1)} Category, do you wish to continue?<button onClick={setDeleteCat(true)} className="btn btn-sm btn-info">Confirm</button></>
+    // ,{ autoClose: false,})
+
+    if (window.confirm(`You are about to delete ${slug.charAt(0).toUpperCase() + slug.slice(1)}. Do you wish to continue?`)) {
+      setLoading(true)
+      removeCategory(slug, user.token)
+      .then(res => {
+        setLoading(false)
+        toast.error(`${res.data.name} was deleted !`)
+        loadCategories();
+      })
+      .catch(err => {
+        setLoading(false)
+        toast.error(err)
+      })
+    } 
+    // console.log(answer, slug)
   }
 
   return user?.role === "admin" && (
@@ -55,7 +78,9 @@ const CategoryCreate = ({theme}) => {
           <hr />
           {categories.map((c) => (
           <div className="alert alert-primary catContainer" key={c._id}>
-            {c.name} <span className="btn btn-sm deleteBtn"><MdDelete className="text-danger"/></span> 
+            {c.name} <span className="btn btn-sm deleteBtn" onClick={() => handleRemove(c.slug)}>
+              <MdDelete className="text-danger"/>
+              </span> 
             <Link className="btn btn-sm editBtn" to={`/admin/category/${c.slug}`}>
               <AiOutlineEdit className="text-info"/>
               </Link>
