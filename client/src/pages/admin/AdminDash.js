@@ -1,6 +1,6 @@
 import React from "react";
 import AdminNav from "../../components/nav/AdminNav";
-import '../../styles/adminDash.css'
+import '../../styles/adminDark.css'
 
 const AdminDash = ({theme}) => {
   return (

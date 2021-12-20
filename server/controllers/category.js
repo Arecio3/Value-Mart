@@ -4,15 +4,15 @@ const slugify = require('slugify')
 // Create Category
 exports.createCat = async (req, res) => {
     try {
-        const {name, icon} = req.body;
-        const category = await new Category({name, slug: slugify(name), icon}).save();
+        const {name} = req.body;
+        const category = await new Category({name, slug: slugify(name)}).save();
         res.json(category)
     } catch (err) {
         res.status(400).send('Category was NOT created')
     }
 }
 // Get list of all categories
-exports.listCat = async (req, res) =>  res.json(await Category.find({}).sort({createdAt: -1}).exec())
+exports.listCat = async (req, res) =>  res.json(await Category.find({}).sort({ createdAt: -1 }).exec());
 
 // Get one Category
 exports.readCat = async (req, res) => {
