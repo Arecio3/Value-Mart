@@ -8,7 +8,7 @@ const { createCat, readCat, updateCat, deleteCat, listCat } = require('../contro
 
 router.post('/category', authCheck, adminCheck, createCat);
 router.get('/categories', listCat);
-router.get('/category/:slug', authCheck, adminCheck, readCat);
+router.get('/category/:slug', readCat);
 router.put('/category/:slug', authCheck, adminCheck, updateCat);
 router.delete('/category/:slug', authCheck, adminCheck, deleteCat);
 
