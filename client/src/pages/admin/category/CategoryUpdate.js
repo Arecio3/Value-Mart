@@ -7,7 +7,6 @@ import '../../../styles/adminDark.css'
 import '../../../styles/catCreate.css'
 import Spinner from '../../../components/spinner/Spinner'
 import { useNavigate,  useParams } from "react-router-dom";
-import { AiOutlineEdit } from 'react-icons/ai'
 
 const CategoryUpdate = ({theme}) => {
   const [name, setName] = useState("");
@@ -18,6 +17,7 @@ const CategoryUpdate = ({theme}) => {
 
   useEffect(() => {
     loadCategory();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
   const loadCategory = () => getCategory(slug).then((category) => setName(slug));

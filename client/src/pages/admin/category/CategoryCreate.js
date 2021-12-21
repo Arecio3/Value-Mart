@@ -14,7 +14,8 @@ const CategoryCreate = ({theme}) => {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
-  // const [deleteCat, setDeleteCat] = useState(false);
+  const [search, setSearch] = useState('');
+
   const { user } = useSelector((state) => ({ ...state }));
 
   useEffect(() => {
@@ -49,9 +50,9 @@ const CategoryCreate = ({theme}) => {
     if (window.confirm(`You are about to delete ${slug.charAt(0).toUpperCase() + slug.slice(1)}. Do you wish to continue?`)) {
       setLoading(true)
       removeCategory(slug, user.token)
-      .then(res => {
+      .then((res) => {
         setLoading(false)
-        toast.error(`${res.data.name} was deleted !`)
+        toast.error(`${slug.charAt(0).toUpperCase() + slug.slice(1)} was deleted !`)
         loadCategories();
       })
       .catch(err => {
@@ -61,6 +62,14 @@ const CategoryCreate = ({theme}) => {
     } 
     // console.log(answer, slug)
   }
+
+  const handleSearch = (e) => {
+    e.preventDefault()
+    setSearch(e.target.value.toLowerCase());
+  }
+
+  const searched = (search) => (category) => category.name.toLowerCase().includes(search)
+
 
   return user?.role === "admin" && (
     <div className={theme === "dark" ? "adminDash container-fluid" : "container-fluid"}>
@@ -75,8 +84,9 @@ const CategoryCreate = ({theme}) => {
             <input type="text" className="mt-1 form-control" value={name} onChange={e => setName(e.target.value)} placeholder="Name" autoFocus required />
             <button className="btn btn-outline-green" onClick={handleSubmit}>Save</button>
           </form>
+          <input type="search" placeholder="Filter Categories" value={search} onChange={handleSearch} className="form-control mb-4" />
           <hr />
-          {categories.map((c) => (
+          {categories.filter(searched(search)).map((c) => (
           <div className="alert alert-primary catContainer" key={c._id}>
             {c.name} <span className="btn btn-sm deleteBtn" onClick={() => handleRemove(c.slug)}>
               <MdDelete className="text-danger"/>
