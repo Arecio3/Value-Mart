@@ -9,6 +9,7 @@ import Spinner from '../../../components/spinner/Spinner'
 import { Link } from "react-router-dom";
 import { AiOutlineEdit } from 'react-icons/ai'
 import { MdDelete } from 'react-icons/md'
+import SearchForm from "../../../components/forms/SearchForm";
 
 const CategoryCreate = ({theme}) => {
   const [name, setName] = useState("");
@@ -63,11 +64,6 @@ const CategoryCreate = ({theme}) => {
     // console.log(answer, slug)
   }
 
-  const handleSearch = (e) => {
-    e.preventDefault()
-    setSearch(e.target.value.toLowerCase());
-  }
-
   const searched = (search) => (category) => category.name.toLowerCase().includes(search)
 
 
@@ -84,7 +80,8 @@ const CategoryCreate = ({theme}) => {
             <input type="text" className="mt-1 form-control" value={name} onChange={e => setName(e.target.value)} placeholder="Name" autoFocus required />
             <button className="btn btn-outline-green" onClick={handleSubmit}>Save</button>
           </form>
-          <input type="search" placeholder="Filter Categories" value={search} onChange={handleSearch} className="form-control mb-4" />
+          <h5 className={theme === "dark" ? 'text-white mt-2' : 'text-black mt-2'}>Search Category</h5>
+          <SearchForm search={search} setSearch={setSearch}/>
           <hr />
           {categories.filter(searched(search)).map((c) => (
           <div className="alert alert-primary catContainer" key={c._id}>
