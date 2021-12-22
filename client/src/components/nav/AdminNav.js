@@ -30,7 +30,7 @@ const AdminNav = ({theme}) => {
                 <Link to="/admin/category" style={theme === "dark" ? {color: "#fff"} : {color: "#0d6efd"}} className="nav-link"><AiOutlineUnorderedList style={{marginRight: '7px'}} />Category</Link>
             </li>
             <li className="nav-tem">
-                <Link to="/admin/subcat" style={theme === "dark" ? {color: "#fff"} : {color: "#0d6efd"}} className="nav-link"><BsFillDiagram2Fill style={{marginRight: '7px'}} />Sub-Categories</Link>
+                <Link to="/admin/sub" style={theme === "dark" ? {color: "#fff"} : {color: "#0d6efd"}} className="nav-link"><BsFillDiagram2Fill style={{marginRight: '7px'}} />Sub-Categories</Link>
             </li>
             <li className="nav-tem">
                 <Link to="/admin/coupon" style={theme === "dark" ? {color: "#fff"} : {color: "#0d6efd"}} className="nav-link"><GiTicket style={{marginRight: '7px'}} />Coupons</Link>
