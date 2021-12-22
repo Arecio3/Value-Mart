@@ -33,7 +33,7 @@ const CategoryCreate = ({theme}) => {
     .then((res) => {
       setLoading(false)
       setName('')
-      toast.success(`Awesome! ${name}Category was created.`);
+      toast.success(`Awesome! ${name} Category was created.`);
       loadCategories();
     })
     .catch((err) => {
