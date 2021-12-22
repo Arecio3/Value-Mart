@@ -9,7 +9,7 @@ const SearchForm = ({search, setSearch}) => {
 
     return (
         <div>
-            <input type="search" placeholder="Filter Categories" value={search} onChange={handleSearch} className="form-control mt-3" />
+            <input type="search" placeholder="Search" value={search} onChange={handleSearch} className="form-control mt-3" />
         </div>
     )
 }

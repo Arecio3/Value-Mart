@@ -33,7 +33,7 @@ const CategoryCreate = ({theme}) => {
     .then((res) => {
       setLoading(false)
       setName('')
-      toast.success(`Awesome! ${name} Category was created !`);
+      toast.success(`Awesome! ${name}Category was created.`);
       loadCategories();
     })
     .catch((err) => {
@@ -53,7 +53,7 @@ const CategoryCreate = ({theme}) => {
       removeCategory(slug, user.token)
       .then((res) => {
         setLoading(false)
-        toast.error(`${slug.charAt(0).toUpperCase() + slug.slice(1)} was deleted !`)
+        toast.error(`${slug.charAt(0).toUpperCase() + slug.slice(1)} was deleted!`)
         loadCategories();
       })
       .catch(err => {
@@ -74,13 +74,13 @@ const CategoryCreate = ({theme}) => {
           <AdminNav theme={theme}/>
         </div>
         <div className="col">
-          {loading ? <Spinner /> : <h4 className={theme === "dark" ? 'text-white' : 'text-black'}>Create Category</h4>}
+          {loading ? <Spinner /> : <h4 className={theme === "dark" ? 'text-white mt-3' : 'text-black mt-3'}>Create Category</h4>}
           <form onSubmit={handleSubmit}>
-            <label>Category Name</label>
+            <label className="text-white-50">Category Name</label>
             <input type="text" className="mt-1 form-control" value={name} onChange={e => setName(e.target.value)} placeholder="Name" autoFocus required />
-            <button className="btn btn-outline-green" onClick={handleSubmit}>Save</button>
+            <button className="btn btn-outline-green" onClick={handleSubmit}>Create {name}</button>
           </form>
-          <h5 className={theme === "dark" ? 'text-white mt-2' : 'text-black mt-2'}>Search Category</h5>
+          <h4 className={theme === "dark" ? 'text-white mt-2' : 'text-black mt-2'}>Search Category</h4>
           <SearchForm search={search} setSearch={setSearch}/>
           <hr />
           {categories.filter(searched(search)).map((c) => (
