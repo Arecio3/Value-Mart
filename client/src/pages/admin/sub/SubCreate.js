@@ -37,6 +37,7 @@ const SubCreate = ({theme}) => {
     setLoading(true);
     createSub({name, parent: category}, user.token)
     .then((res) => {
+      loadSubs()
       setLoading(false)
       setName('')
       toast.success(`Awesome! ${name} Sub-Category was created.`);
@@ -49,14 +50,11 @@ const SubCreate = ({theme}) => {
   }
 
   const handleRemove = async(slug) => {
-    // let answer = toast.warning(
-    // <>You are about to delete the {slug.charAt(0).toUpperCase() + slug.slice(1)} Category, do you wish to continue?<button onClick={setDeleteCat(true)} className="btn btn-sm btn-info">Confirm</button></>
-    // ,{ autoClose: false,})
-
     if (window.confirm(`You are about to delete ${slug.charAt(0).toUpperCase() + slug.slice(1)}. Do you wish to continue?`)) {
       setLoading(true)
       removeSub(slug, user.token)
       .then((res) => {
+        loadSubs()
         setLoading(false)
         toast.error(`${slug.charAt(0).toUpperCase() + slug.slice(1)} was deleted!`)
       })
@@ -99,7 +97,7 @@ const SubCreate = ({theme}) => {
           <hr />
           {subs.filter(searched(search)).map((sub) => (
           <div className="alert alert-primary catContainer" key={sub._id}>
-            {sub.name} <span className="btn btn-sm deleteBtn" onClick={() => handleRemove(sub.slug)}>
+            {sub.name}<span className="btn btn-sm deleteBtn" onClick={() => handleRemove(sub.slug)}>
               <MdDelete className="text-danger"/>
               </span> 
             <Link className="btn btn-sm editBtn" to={`/admin/sub/${sub.slug}`}>
