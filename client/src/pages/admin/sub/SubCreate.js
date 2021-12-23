@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import AdminNav from "../../../components/nav/AdminNav";
 import { toast } from 'react-toastify';
 import { useSelector } from "react-redux";
-import { createSub, getSub, removeSub, getSubs } from '../../../functions/sub';
+import { createSub, removeSub, getSubs } from '../../../functions/sub';
 import { getCategories } from '../../../functions/category';
 import '../../../styles/adminDark.css'
 import '../../../styles/catCreate.css'
@@ -31,7 +31,7 @@ const SubCreate = ({theme}) => {
   const loadCategories = () => getCategories().then((category) => setCategories(category?.data));
   const loadSubs = () => getSubs().then((sub) => setSubs(sub?.data));
   
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);

@@ -18,7 +18,7 @@ export const removeSub = async (slug, authToken) => {
 }
 
 export const updateSub = async (slug, sub, authToken) => {
- await axios.put(`${process.env.REACT_APP_API}/sub/${slug}`, sub,{
+ await axios.put(`${process.env.REACT_APP_API}/sub/${slug}`, sub, {
      headers: {
          authToken,
      }

@@ -22,9 +22,9 @@ exports.readSub = async (req, res) => {
 
 // Update
 exports.updateSub = async (req, res) => {
-    const { name } = req.body;
+    const { name, parent } = req.body;
     try {
-        const updated = await Sub.findOneAndUpdate({slug: req.params.slug}, {name, slug: slugify(name)}, {new: true})
+        const updated = await Sub.findOneAndUpdate({slug: req.params.slug}, {name, parent, slug: slugify(name)}, {new: true})
         res.json(updated)
     } catch(err) {
         res.status(400).send("Could not update Sub")

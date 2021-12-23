@@ -19,6 +19,7 @@ import CategoryCreate from "./pages/admin/category/CategoryCreate";
 import CategoryUpdate from "./pages/admin/category/CategoryUpdate";
 import Wishlist from "./pages/user/Wishlist";
 import SubCreate from './pages/admin/sub/SubCreate';
+import SubUpdate from './pages/admin/sub/SubUpdate';
 
 const App = () => {
   const [theme, setTheme] = useState("dark");
@@ -85,6 +86,7 @@ const App = () => {
               <Route exact path='/admin/category' element={<CategoryCreate theme={theme}/>}/>
               <Route exact path='/admin/category/:slug' element={<CategoryUpdate theme={theme}/>}/>
               <Route exact path='/admin/sub' element={<SubCreate theme={theme}/>}/>
+              <Route exact path='/admin/sub/:slug' element={<SubUpdate theme={theme}/>}/>
           </Routes>
     </ThemeProvider>
     </>
