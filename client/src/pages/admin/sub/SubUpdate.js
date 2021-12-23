@@ -43,7 +43,7 @@ const SubUpdate = ({ theme }) => {
         loadSub();
         setLoading(false);
         setName("");
-        toast.success(`The ${name} Sub-Category has been added.`);
+        toast.success(`The ${name} Sub-Category has been created.`);
         navigate("/admin/sub");
       })
       .catch((err) => {
