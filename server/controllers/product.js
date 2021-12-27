@@ -1,5 +1,5 @@
 const Product = require('../models/product')
-const slugify = require('sligify')
+const slugify = require('slugify')
 
 exports.createProduct = async (req, res) => {
     try {
@@ -8,6 +8,7 @@ exports.createProduct = async (req, res) => {
         const newProduct = await new Product(req.body).save()
         res.json(newProduct)
     } catch (err) {
+    console.log(err.message)
         res.status(400).send('Product was NOT created')
     }
 }

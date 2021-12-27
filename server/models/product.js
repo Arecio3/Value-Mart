@@ -29,33 +29,33 @@ const productSchema = new mongoose.Schema({
         maxlength: 12,
         text: true,
     },
-    category: {
-        type: ObjectId,
-        ref: "Category",
-    },
-    subs: [{
-        type: ObjectId,
-        ref: "Sub",
-    }],
+    // category: {
+    //     type: ObjectId,
+    //     ref: "Category",
+    // },
+    // subs: [{
+    //     type: ObjectId,
+    //     ref: "Sub",
+    // }],
     quantity: Number,
     sold: {
         type: Number,
         default: 0
     },
-    images: {
-        type: Array
-    },
+    // images: {
+    //     type: Array
+    // },
     shipping: {
         type: String,
-        enum: ["Yes", "No"],
+        enum: ["Yes", "No"]
     },
     color: {
         type: String,
-        enum: ["Black", "Gold", "Silver", "White", "Blue" ],
+        enum: ["Black", "Gold", "Silver", "White", "Blue", "None" ],
     },
     brand: {
         type: String,
-        enum: ["Apple", "Microsoft", "Samsung", "Android", "Hollister" ],
+        enum: ["Apple", "Microsoft", "Samsung", "Android", "Hollister", "None" ],
     },
     // rating:[{
     //     star: Number,

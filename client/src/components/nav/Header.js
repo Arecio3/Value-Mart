@@ -57,11 +57,18 @@ const Header = ({ theme, setTheme }) => {
       </>
     );
   };
+  const coolName = () => {
+    return (
+      <>
+        {t("Hello")} {`${user?.email && user.email.split("@")[0]}`}
+      </>
+    );
+  };
   const { t } = useTranslation();
   return (
     <>
       <div className="logo-title-container">
-        <h2 className="logo-title">Value-Mart</h2>
+       {user?.role === "admin" ? <h2 className="logo-title text-center">The Best God Damn Online Store</h2>:<h2 className="logo-title">Value-Mart</h2>}
       </div>
       <Menu
         onClick={handleClick}
@@ -100,7 +107,7 @@ const Header = ({ theme, setTheme }) => {
             className={user ? "float-right" : "float-left"}
             key="SubMenu"
             icon={user.role === "subscriber" ? <UserOutlined /> : <FaUserShield />}
-            title={nickname()}
+            title={user.role === "admin" ? coolName() : nickname()}
           >
             {user ? (
               ""

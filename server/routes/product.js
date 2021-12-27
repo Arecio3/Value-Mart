@@ -6,7 +6,7 @@ const { authCheck, adminCheck } = require('../middlewares/auth');
 // Controllers
 const { createProduct, readProduct, updateProduct, deleteProduct, listProduct } = require('../controllers/product');
 
-router.post('/category', authCheck, adminCheck, createProduct);
+router.post('/product', authCheck, adminCheck, createProduct);
 
 
 module.exports = router;

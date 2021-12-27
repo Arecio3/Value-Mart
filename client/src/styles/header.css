@@ -33,12 +33,13 @@
 
 .logo-title-container {
     position: absolute;
-    right: 55rem;
+    left: 38%;
 }
 
 .logo-title {
     color: #1890ff !important;
-    font-weight: light;
+    font-weight: lighter;
+    text-align: center;
 }
 
 @media screen and (min-width: 1200px){
