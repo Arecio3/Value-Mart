@@ -11,18 +11,18 @@ import "../../../styles/catCreate.css";
 // import { Tooltip } from "antd";
 
 const initialState = { 
-    title: '',
-    description: '',
-    price: '',
+    title: 'Macbook Pro M1 Max',
+    description: '16 inch screen. OLED display, 16GB of RAM and 32 cores of GPU',
+    price: '3500',
     categories: [],
     category: '',
     subs: [],
     shipping: 'No',
-    quantity: '',
+    quantity: '10',
     images: [],
     colors: ["Black", "Gold", "Silver", "White", "Blue", "None" ],
     brands: ["Apple", "Microsoft", "Samsung", "Android", "Hollister", "None" ],
-    color: '',
+    color: 'Black',
     conditions : ["Very Used", "Barely Used", "New Open Box", "Refurbished", "Brand New"],
     brand: 'None',
     condition: 'Brand New'
@@ -55,11 +55,12 @@ const ProductCreate = ({theme}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         createProduct(values, user.token)
-        .then(res => {
+        .then((res)=> {
             toast.success(`${title} was created !`)
+            window.location.reload();
         })
         .catch(err => {
-            toast.error(err.message)
+            toast.error(err.response.data.err)
         })
     }
     const handleChange = (e) => {
