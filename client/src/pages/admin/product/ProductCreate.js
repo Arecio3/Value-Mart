@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AdminNav from "../../../components/nav/AdminNav";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import { getCategories } from '../../../functions/category';
 import {
   createProduct
 } from "../../../functions/product";
@@ -32,6 +33,11 @@ const ProductCreate = ({theme}) => {
     const [values, setValues] = useState(initialState);
 
     const { user } = useSelector((state) => ({ ...state }));
+
+    useEffect(() => {
+      loadCategories();
+    }, []);
+  
 
     // destructure values from state
     const {
@@ -67,6 +73,8 @@ const ProductCreate = ({theme}) => {
         setValues({...values, [e.target.name]: e.target.value })
         // console.log(e.target.name)
     }
+
+      const loadCategories = () => getCategories().then((category) => setValues({...values, categories: category?.data}));
 
 
   return user?.role === "admin" && (
@@ -127,6 +135,13 @@ const ProductCreate = ({theme}) => {
                     {conditions.map(condition => <option key={condition} value={condition}>{condition}</option>)}
                 </select>
                 </div>
+                <div className="form-group">
+                <label className="text-warning p-1 fw-bold">Category</label>
+                <select name="category" className="form-control" onChange={handleChange}>
+                    <option>Please Select</option>
+                    {categories.length > 0 && categories.map((category) => (<option key={category._id} value={category._id}>{category.name}</option>))}
+                </select>
+            </div>
                 <button className="btn btn-outline-info">
                     Create
                 </button>
